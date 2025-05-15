@@ -47,4 +47,14 @@ describe("similarity", () => {
         const result = similarity("hell", "hello");
         expect(result).toBeLessThan(1);
     });
+
+    it("should return 0 if the first input parameter is null", () => {
+        const result = similarity(null, "hello");
+        expect(result).toBe(0);
+    });
+
+    it("should return 0 if the second input parameter is null", () => {
+        const result = similarity("hello", null);
+        expect(result).toBe(0);
+    });
 });

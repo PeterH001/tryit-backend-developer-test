@@ -20,9 +20,7 @@ export const resolvers = {
           `SELECT 
               AlbumId
             , Title 
-            FROM albums 
-            WHERE title LIKE ?`,
-          [`%${args.title}%`],
+            FROM albums`,
           (
             err,
             rows: {
@@ -44,10 +42,6 @@ export const resolvers = {
                   id: row.AlbumId!,
                   title: row.Title!,
                 }));
-              //   const result = rows.map((row) => ({
-              //     id: row.AlbumId!,
-              //     title: row.Title!,
-              //   }));
               resolve(result);
             }
           }
@@ -94,8 +88,7 @@ export const resolvers = {
     artists: (_, args: { name: string }) => {
       return new Promise((resolve, reject) => {
         db.all(
-          "SELECT ArtistId, Name FROM artists WHERE Name LIKE ?",
-          [`%${args.name}%`],
+          "SELECT ArtistId, Name FROM artists",
           (
             err,
             rows: {
@@ -107,7 +100,6 @@ export const resolvers = {
               console.error("Error fetching artists:", err);
               reject(err);
             } else {
-              //TODO: Implement filtering logic 90% match
               const result = rows
                 .filter((row) => {
                   if (similarity(row.Name, args.name) > similarityTreshold) {
