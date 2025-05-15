@@ -2,8 +2,14 @@ import sqlite3 from "sqlite3";
 import { similarity } from "./Similarity";
 import { ApolloError } from "apollo-server-express";
 
-const db = new sqlite3.Database("chinook.db");
-console.log("Connected to the database.");
+const db = new sqlite3.Database("chinook.db", (err) => {
+  if (err) {
+    console.error("Error opening database " + err.message);
+  }else{
+    console.log('Connected to the SQLite database.')
+  }
+});
+
 const similarityTreshold = 0.9;
 
 export const resolvers = {
