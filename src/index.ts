@@ -10,10 +10,10 @@ const server = new ApolloServer({
   resolvers,
 });
 
-await server.start()
+await server.start();
 server.applyMiddleware({ app });
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 app.listen({ port: PORT }, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
