@@ -1,6 +1,6 @@
 # Tryit backend developer test
 
-This project is using express, GraphQL and ApolloServer to access a database containing informations about music tracks.
+This project is using express, GraphQL and ApolloServer to access a SQLite database containing informations about music tracks.
 
 ## Setup
 
